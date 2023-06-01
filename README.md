@@ -13,4 +13,4 @@
 
 ## Optimal Experimental Date and Efficiency Prediction of Perovskite Solar Cells based on Weather Forecast
 
-- dewpoint_prediction.ipynb 파일 참조
+- dewpoint_crawling.ipynb 파일 참조

@@ -4,10 +4,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # NOTE: Make sure that the outcome column is labeled 'target' in the data file
-tpot_data = pd.read_csv('PATH/TO/DATA/FILE', sep='COLUMN_SEPARATOR', dtype=np.float64)
-features = tpot_data.drop('target', axis=1)
-training_features, testing_features, training_target, testing_target = \
-            train_test_split(features, tpot_data['target'], random_state=42)
+dt_train = pd.read_csv("img_to_reflectance_train_data.csv")
+dt_test = pd.read_csv("img_to_reflectance_test_data.csv")
+
+training_features = dt_train.drop(columns=['R.I','Reflectance'],axis=1)
+training_target = dt_train.iloc[:,-1]
+testing_features = dt_test.drop(columns=['R.I','Reflectance'],axis=1)
+testing_target = dt_test.iloc[:,-1]
 
 # Average CV score on the training set was: -4.32363391379459
 exported_pipeline = RandomForestRegressor(bootstrap=True, max_features=1.0, min_samples_leaf=1, min_samples_split=9, n_estimators=100)

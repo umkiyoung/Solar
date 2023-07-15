@@ -6,10 +6,15 @@
     : 기존 데이터 이용
     - RGB -> 두께
     - RGB + alpha -> Reflectance 
-- prototype_2
+- prototype_2-1
     : 새로운 데이터 이용
-    - RGB -> 두께 (완), 결과 양호
-    - RGB + alpha -> Reflectance (진행중)
+    - RGB -> Thickness 결과 양호
+- prototype_2-2
+    - RGB -> Reflectance 
+    - RGB + Thickness -> Reflectance
+    - RGB + Wavelength -> Reflectance
+    - RGB + Thickness + Wavelength -> Reflectance
+
 -----
 ## Prediction of Contact Resistivity
 

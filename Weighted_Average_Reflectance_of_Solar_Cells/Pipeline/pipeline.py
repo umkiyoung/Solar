@@ -156,10 +156,11 @@ class Solar_pipeline(object):
         self.X_train, self.X_test, self.y_train, self.y_test = self.data_split()
         self.perf_table = pd.DataFrame(columns=['R2', 'RMSE', 'MSE', 'MAE', 'MAPE'])
         self.best_models = {}
+        np.random.seed(random_state)
         
         
     def data_split(self):     
-        train_dt, test_dt = train_test_split(self.dataset, test_size=self.test_size, random_state=self.random_state)
+        train_dt, test_dt = train_test_split(self.dataset, test_size=self.test_size, random_state=42)
         X_train, y_train = train_dt.drop(self.target, axis=1), train_dt[self.target]
         X_test, y_test = test_dt.drop(self.target, axis=1), test_dt[self.target]
         return X_train, X_test, y_train, y_test

@@ -1,0 +1,330 @@
+{
+    "LinearRegression": null,
+    "Ridge": {
+        "alpha": [
+            0.01,
+            10.0,
+            "log-uniform"
+        ],
+        "solver": [
+            "auto",
+            "svd",
+            "cholesky",
+            "lsqr",
+            "saga"
+        ]
+    },
+    "Lasso": {
+        "alpha": [
+            0.01,
+            10.0,
+            "log-uniform"
+        ],
+        "selection": [
+            "cyclic",
+            "random"
+        ]
+    },
+    "ElasticNet": {
+        "alpha": [
+            0.01,
+            10.0,
+            "log-uniform"
+        ],
+        "l1_ratio": [
+            0.0,
+            1.0
+        ],
+        "selection": [
+            "cyclic",
+            "random"
+        ]
+    },
+    "BayesianRidge": {
+        "alpha_1": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "alpha_2": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "lambda_1": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "lambda_2": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ]
+    },
+    "ARDRegression": {
+        "alpha_1": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "alpha_2": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "lambda_1": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ],
+        "lambda_2": [
+            1e-6,
+            1e-1,
+            "log-uniform"
+        ]
+    },
+    "SGDRegressor": {
+        "loss": [
+            "squared_loss",
+            "huber",
+            "epsilon_insensitive"
+        ],
+        "penalty": [
+            "l2",
+            "l1",
+            "elasticnet"
+        ],
+        "alpha": [
+            0.0001,
+            0.01,
+            "log-uniform"
+        ],
+        "l1_ratio": [
+            0.01,
+            1.0
+        ]
+    },
+    "SVR": {
+        "C": [
+            0.01,
+            10.0,
+            "log-uniform"
+        ],
+        "kernel": [
+            "linear",
+            "rbf",
+            "poly",
+            "sigmoid"
+        ],
+        "gamma": [
+            0.001,
+            1.0,
+            "log-uniform"
+        ]
+    },
+    "RandomForestRegressor": {
+        "n_estimators": [
+            50,
+            500
+        ],
+        "max_depth": [
+            3,
+            30
+        ],
+        "min_samples_split": [
+            2,
+            20
+        ],
+        "min_samples_leaf": [
+            1,
+            20
+        ],
+        "max_features": [
+            "auto",
+            "sqrt",
+            "log2"
+        ]
+    },
+    "GradientBoostingRegressor": {
+        "n_estimators": [
+            50,
+            500
+        ],
+        "learning_rate": [
+            0.001,
+            0.2
+        ],
+        "max_depth": [
+            3,
+            30
+        ],
+        "min_samples_split": [
+            2,
+            20
+        ],
+        "min_samples_leaf": [
+            1,
+            20
+        ],
+        "max_features": [
+            "auto",
+            "sqrt",
+            "log2"
+        ]
+    },
+    "AdaBoostRegressor": {
+        "n_estimators": [
+            50,
+            500
+        ],
+        "learning_rate": [
+            0.001,
+            1.0
+        ]
+    },
+    "XGBRegressor": {
+        "n_estimators": [
+            50,
+            500
+        ],
+        "learning_rate": [
+            0.001,
+            0.2
+        ],
+        "max_depth": [
+            3,
+            30
+        ],
+        "min_child_weight": [
+            1,
+            10
+        ],
+        "subsample": [
+            0.5,
+            1.0
+        ],
+        "colsample_bytree": [
+            0.5,
+            1.0
+        ]
+    },
+    "LGBMRegressor": {
+        "n_estimators": [
+            50,
+            500
+        ],
+        "learning_rate": [
+            0.001,
+            0.2
+        ],
+        "max_depth": [
+            3,
+            30
+        ],
+        "num_leaves": [
+            10,
+            100
+        ],
+        "min_child_samples": [
+            5,
+            50
+        ],
+        "subsample": [
+            0.5,
+            1.0
+        ],
+        "colsample_bytree": [
+            0.5,
+            1.0
+        ]
+    },
+    "CatBoostRegressor": {
+        "iterations": [
+            50,
+            500
+        ],
+        "learning_rate": [
+            0.001,
+            0.2
+        ],
+        "depth": [
+            3,
+            10
+        ]
+    },
+    "KNeighborsRegressor": {
+        "n_neighbors": [
+            1,
+            20
+        ],
+        "weights": [
+            "uniform",
+            "distance"
+        ],
+        "algorithm": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+        ]
+    },
+    "DecisionTreeRegressor": {
+        "max_depth": [
+            3,
+            30
+        ],
+        "min_samples_split": [
+            2,
+            20
+        ],
+        "min_samples_leaf": [
+            1,
+            20
+        ],
+        "max_features": [
+            "auto",
+            "sqrt",
+            "log2"
+        ]
+    },
+    "MLPRegressor": {
+        "hidden_layer_sizes": [
+            [
+                50
+            ],
+            [
+                100
+            ],
+            [
+                50,
+                50
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "activation": [
+            "identity",
+            "logistic",
+            "tanh",
+            "relu"
+        ],
+        "solver": [
+            "lbfgs",
+            "sgd",
+            "adam"
+        ],
+        "alpha": [
+            0.0001,
+            0.1,
+            "log-uniform"
+        ],
+        "learning_rate": [
+            "constant",
+            "invscaling",
+            "adaptive"
+        ]
+    }
+}

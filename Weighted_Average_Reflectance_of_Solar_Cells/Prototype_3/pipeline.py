@@ -150,7 +150,7 @@ class Solar_pipeline(object):
         최적 모델 성능평가표 출력 및 예측값 시각화    
     
     """
-    def __init__(self, dataset, target, hyperparams_path, model_path, pred_path, except_model=None, tpot=False, cv = 10, test_size=0.3, random_state=42):
+    def __init__(self, dataset, target, hyperparams_path, model_path, pred_path, except_model=None, tpot=False, cv = 5, test_size=0.3, random_state=42):
         self.dataset = dataset
         self.target = target
         self.hyperparams = self.read_hyperparams(hyperparams_path)
@@ -171,10 +171,10 @@ class Solar_pipeline(object):
         np.random.seed(random_state)
         
         
-    def data_split(self):     
-        train_dt, test_dt = train_test_split(self.dataset, test_size=self.test_size, random_state=42)
-        X_train, y_train = train_dt.drop(self.target, axis=1), train_dt[self.target]
-        X_test, y_test = test_dt.drop(self.target, axis=1), test_dt[self.target]
+    def data_split(self):
+        X = self.dataset.drop(self.target, axis=1)
+        y = self.dataset[self.target]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=self.test_size, random_state=42)     
         return X_train, X_test, y_train, y_test
     
     def read_hyperparams(self, hyperparams_path):
@@ -182,8 +182,14 @@ class Solar_pipeline(object):
             hyperparams = json.load(f)
         return hyperparams
 
+    def display_dataset(self, head=5):
+        return self.dataset.head(head)
+                
 
     def fit(self, save_pred=True):
+        """
+        Tpot 사용 시 
+        """
         if self.tpot == True:
             tpot = TPOTRegressor(generations=5, population_size=50, verbosity=2, random_state=self.random_state, cv=self.cv, n_jobs=-1)
             tpot.fit(self.X_train, self.y_train)
@@ -194,7 +200,9 @@ class Solar_pipeline(object):
             self.perf_table = update_table(self.perf_table, y_pred, self.y_test, 'tpot')
             print(self.perf_table.loc['tpot'])
             return
-        
+        """
+        Tpot 사용 X 시
+        """
         for model_name, model in zip(['LinearRegression', 'Ridge', 'Lasso', 'ElasticNet', 'BayesianRidge', 'ARDRegression',
                                       'SGDRegressor', 'SVR', 'RandomForestRegressor', 'GradientBoostingRegressor', 'AdaBoostRegressor',
                                       'XGBRegressor', 'LGBMRegressor', 'CatBoostRegressor', 'KNeighborsRegressor', 'DecisionTreeRegressor',
